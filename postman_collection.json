@@ -1,0 +1,181 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "Transport Sale API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"12345678\",\n  \"repeat_password\": \"12345678\",\n  \"branch\": \"branch_id\",\n  \"birthDate\": \"2000-01-01\",\n  \"gender\": \"male\",\n  \"role\": \"STAFF\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"12345678\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Add Branch",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Branch\",\n  \"address\": \"Test Address\",\n  \"time\": \"09:00-18:00\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/branches",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "branches"]
+        }
+      }
+    },
+    {
+      "name": "Get Branches",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/branches",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "branches"]
+        }
+      }
+    },
+    {
+      "name": "Add Transport",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"branch\": \"branch_id\",\n  \"model\": \"Model X\",\n  \"color\": \"red\",\n  \"img\": \"https://example.com/img.jpg\",\n  \"price\": 10000,\n  \"time\": \"2024-01-01\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/transports",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "transports"]
+        }
+      }
+    },
+    {
+      "name": "Get Transports",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/transports",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "transports"]
+        }
+      }
+    },
+    {
+      "name": "Add Permission",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"Transport\",\n  \"actions\": [\"create\", \"read\"]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/permissions/add",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "permissions", "add"]
+        }
+      }
+    },
+    {
+      "name": "Assign Permission",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"staff\": \"staff_id\",\n  \"permission\": \"permission_id\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/permissions/assign",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "permissions", "assign"]
+        }
+      }
+    },
+    {
+      "name": "Own Permissions",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/permissions/own",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "permissions", "own"]
+        }
+      }
+    }
+  ]
+}
